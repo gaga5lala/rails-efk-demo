@@ -15,4 +15,7 @@ RUN \
   echo "[INSTALL] mysql" && \
   apt-get install -y libmysqlclient-dev \
                       libcurl4-openssl-dev \
-                      mysql-client
+                      mysql-client && \
+  echo "[INSTALL] nodejs" && \
+  curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+  apt-get install -y nodejs
