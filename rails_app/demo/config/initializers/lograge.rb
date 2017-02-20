@@ -15,4 +15,9 @@ Demo::Application.configure do
       params: event.payload[:params]
     }
   end
+
+  # TODO:
+  #
+  # 1. sql
+  # 2. exception
 end
