@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  mysql:
+    container_name: mysql
+    # build: .
+    image: mysql:5.6
+    networks:
+      - rails_efk
+    environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "3306:3306"
+    # volumes:
+    #  - .:/code
+  rails:
+    container_name: rails
+    image: gaga/rails-efk/rails-demo
+    networks:
+      - rails_efk
+    environment:
+      - DATABASE_URL=mysql
+    ports:
+      - "3000:80"
+    volumes:
+      - ./rails_app:/var/www/demo
+    command:
+      - "bin/rails server"
+networks:
+  rails_efk:
+    driver: bridge
